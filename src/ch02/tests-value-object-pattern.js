@@ -2,7 +2,6 @@
 
 QUnit.module('Chapter 2, value object pattern');
 
-const R = require('ramda');
 const ValueObjects = require('../model/value_objects.js');
 const zipCode = ValueObjects.zipCode;
 const coordinate = ValueObjects.coordinate;

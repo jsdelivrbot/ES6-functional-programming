@@ -51,8 +51,7 @@ QUnit.test("Playing with immutable value objects", function() {
 QUnit.test("Deep freeze object", function() {
     const deepFreeze = require('./helper').deepFreeze;
     let address = new Address('US');
-    let student = new Student('444-44-4444', 'Joe', 'Smith',
-        'Harvard', 1960, address);
+    let student = new Student('444-44-4444', 'Joe', 'Smith', 'Harvard', 1960, address);
     let frozenStudent = deepFreeze(student);
 
     assert.throws(() => {
