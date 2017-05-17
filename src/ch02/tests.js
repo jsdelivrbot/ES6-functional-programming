@@ -2,19 +2,18 @@
 
 QUnit.module('Chapter 2');
 
-var curry = new Student('Haskell', 'Curry', '111-11-1111', 'Penn State', null, new Address('US'));
-var turing = new Student('Alan', 'Turing', '222-22-2222', 'Princeton', null, new Address('England'));
-var church = new Student('Alonzo', 'Church', '333-33-3333', 'Princeton', null, new Address('England'));
-var kleene = new Student('Stephen', 'Kleene', '444-44-4444', 'Princeton', null, new Address('US'));
-
 const R = require('ramda');
-
 const ValueObjects = require('../model/value_objects.js');
 const zipCode = ValueObjects.zipCode;
 const coordinate = ValueObjects.coordinate;
 const Student = require('../model/Student.js').Student;
 const Address = require('../model/Address.js').Address;
 const methodsFromFP = require('./solution-fp').methods;
+
+var curry = new Student('Haskell', 'Curry', '111-11-1111', 'Penn State', null, new Address('US'));
+var turing = new Student('Alan', 'Turing', '222-22-2222', 'Princeton', null, new Address('England'));
+var church = new Student('Alonzo', 'Church', '333-33-3333', 'Princeton', null, new Address('England'));
+var kleene = new Student('Stephen', 'Kleene', '444-44-4444', 'Princeton', null, new Address('US'));
 
 QUnit.test('Using the methods from programming functional solution', function() {
     const resolve = {

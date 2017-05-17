@@ -24,6 +24,16 @@ exports.Person = class Person {
         this._firstname = firstname;
         return this;
     }
+    /**
+      You’d have to manually
+      copy the state of all
+      other properties into a
+      new instance (terrible!).
+
+      set lastname(lastname) {
+          return new Person(this._firstname, lastname);
+      }
+    **/
 
     get lastname() {
         return this._lastname;
