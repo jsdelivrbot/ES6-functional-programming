@@ -57,3 +57,69 @@ ages.sort(); // ->[1, 10, 2, 21]
 
   In addition to being assignable, JavaScript functions like sort() accept other functions as arguments and belong to a category called higher-order functions
 **/
+
+/**
+  Because functions behave like regular objects, you can intuitively expect that they can be passed in as function arguments and returned from other functions
+**/
+
+function applyOperation(a, b, opt) {
+    return opt(a, b);
+}
+var multiplier = (a, b) => a * b;
+
+applyOperation(2, 3, multiplier); // -> 6
+
+function add(a) {
+    return function(b) {
+        return a + b; // save the context from add function
+    }
+}
+add(3)(3); //-> 6
+
+// IMPERATIVE CODE
+function printPeopleInTheUs(people) {
+    for (let i = 0; i < people.length; i++) {
+        var thisPerson = people[i];
+
+        if (thisPerson.address.country === 'US') {
+            console.log(thisPerson);
+        }
+    }
+}
+printPeopleInTheUs([p1, p2, p3]);
+
+function printPeople(people, action) {
+    for (let i = 0; i < people.length; i++) {
+        action(people[i]);
+    }
+}
+var action = function(person) {
+    if (person.address.country === 'US') {
+        console.log(person);
+    }
+}
+
+printPeople(people, action);
+
+// This is the mindset you must develop to fully embrace functional programming.
+function printPeople(people, selector, printer) {
+    people.forEach(function(person) {
+        if (selector(person)) {
+            printer(person);
+        }
+    });
+}
+var inUs = person => person.address.country === 'US';
+
+printPeople(people, inUs, console.log);
+
+/**
+  LOOKING AHEAD
+**/
+
+var countryPath = ['address', 'country'];
+var countryL = R.lens(R.path(countryPath), R.assocPath(countryPath));
+var inCountry = R.curry((country, person) =>
+    R.equals(R.view(countryL, person), country));
+
+people.filter(inCountry('US')).map(console.log);

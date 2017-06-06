@@ -21,6 +21,20 @@ function coordinate(lat, long) {
     };
 }
 
+/**
+  2.4 closures and scopes
+
+  we’ll look at using closures to emulate private variables, fetch data from the server, and force block-scoped variables
+  A closure is a data structure that binds a function to its environment at the moment it’s declared.
+
+  It’s based on the textual location of the function declaration; therefore,
+  a closure is also called a static or lexical scope surrounding the function definition
+
+  The rules that govern the behavior of a function’s closure are closely related to
+  JavaScript’s scoping rules. A scope groups a set of variable bindings and defines a sec-
+  tion of code in which a variable is defined.
+**/
+
 function zipCode(code, location) {
     let _code = code;
     let _location = location || '';
