@@ -9,6 +9,10 @@
   pero no para objectos.
 **/
 const Student = require('../model/Student.js').Student;
+const ValueObjects = require('../model/value_objects.js');
+const zipCode = ValueObjects.zipCode;
+const coordinate = ValueObjects.coordinate;
+
 const gravity_ms = 9.806;
 const student = new Student('Alonzo', 'Church', '666-66-6666', 'Princeton');
 
@@ -21,46 +25,8 @@ student.lastname = 'Mourning';
   A value object is one whose equality doesn’t depend on identity or reference,
   just on its value; once declared, its state may not change.
 **/
-function zipCodeMock(code, location) {
-    const _code = code;
-    const _location = location || '';
-    return {
-        code: function() {
-            return _code;
-        },
-        location: function() {
-            return _location;
-        },
-        fromString: function(str) {
-            let parts = str.split('-');
-            return zipCodeMock(parts[0], parts[1]);
-        },
-        toString: function() {
-            return _code + '-' + _location;
-        }
-    };
-};
 
-function coordinate(lat, long) {
-    let _lat = lat;
-    let _long = long;
-    return {
-        latitude: function() {
-            return _lat;
-        },
-        longitude: function() {
-            return _long;
-        },
-        translate: function(dx, dy) {
-            return coordinate(_lat + dx, _long + dy);
-        },
-        toString: function() {
-            return '(' + _lat + ',' + _long + ')';
-        }
-    };
-};
-
-const princetonZip = zipCodeMock('08544', '3345');
+const princetonZip = zipCode('08544', '3345');
 const greenwich = coordinate(51.4778, 0.0015);
 
 console.log(greenwich.translate(10, 10).toString()); //-> '(61.4778, 10.0015)'
