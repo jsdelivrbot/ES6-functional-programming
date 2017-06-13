@@ -21,7 +21,7 @@ student.lastname = 'Mourning';
   A value object is one whose equality doesn’t depend on identity or reference,
   just on its value; once declared, its state may not change.
 **/
-function zipCode(code, location) {
+function zipCodeMock(code, location) {
     const _code = code;
     const _location = location || '';
     return {
@@ -33,7 +33,7 @@ function zipCode(code, location) {
         },
         fromString: function(str) {
             let parts = str.split('-');
-            return zipCode(parts[0], parts[1]);
+            return zipCodeMock(parts[0], parts[1]);
         },
         toString: function() {
             return _code + '-' + _location;
@@ -60,7 +60,7 @@ function coordinate(lat, long) {
     };
 };
 
-const princetonZip = zipCode('08544', '3345');
+const princetonZip = zipCodeMock('08544', '3345');
 const greenwich = coordinate(51.4778, 0.0015);
 
 console.log(greenwich.translate(10, 10).toString()); //-> '(61.4778, 10.0015)'
