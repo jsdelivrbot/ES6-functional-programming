@@ -66,3 +66,5 @@ const greenwich = coordinate(51.4778, 0.0015);
 console.log(greenwich.translate(10, 10).toString()); //-> '(61.4778, 10.0015)'
 console.log(greenwich.toString()); //-> '(51.4778, 0.0015)'
 console.log(princetonZip.toString()); //-> '08544-3345'
+
+console.log('Develop');
