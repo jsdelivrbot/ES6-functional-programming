@@ -33,6 +33,7 @@ const Tuple = function( /* types */ ) {
 		}, this);		
 		Object.freeze(this);
 	};
+
 	_T.prototype.values = function () {				
 		return Object.keys(this).map(k => this[k], this);
 	};	

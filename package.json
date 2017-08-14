@@ -17,6 +17,6 @@
         "sinon-qunit": "2.0.0"
     },
     "scripts": {
-        "test": "node node_modules/qunit/bin/cli.js -t src/ch02/tests.js -c src/ch02/tests.js"
+        "test": "node node_modules/qunit/bin/cli.js -t src/ch03/tests.js -c src/ch03/tests.js"
     }
 }
